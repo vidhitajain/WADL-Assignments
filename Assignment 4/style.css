@@ -1,0 +1,52 @@
+/* styles.css */
+/* Add your custom styles here */
+
+/* Example: Customizing navbar background color */
+.ui-navbar {
+  background-color: #4CAF50; /* Green */
+}
+
+/* Example: Customizing navbar link color */
+.ui-navbar a {
+  color: #fff;
+}
+
+/* Example: Styling dashboard widgets */
+.dashboard-widget {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dashboard-widget h2 {
+  color: #333;
+}
+
+.dashboard-widget ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dashboard-widget ul li {
+  margin-bottom: 5px;
+}
+
+.dashboard-widget p {
+  margin: 0;
+  color: #555;
+}
+
+.ui-bar {
+  height: 250px; /* Set the card height */
+}
+.ui-bar img {
+  max-width: 100%;
+  max-height: 100%; /* Set the image height to 90% of the card height */
+ 
+  margin: auto;
+  display: block;
+}
+.ui-bar h3, .ui-bar p {
+  margin: 0;
+}
