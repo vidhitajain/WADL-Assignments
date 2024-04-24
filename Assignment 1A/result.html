@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Result</title>
+</head>
+<body>
+    <h1>Registration Result</h1>
+    <div id="result"></div>
+
+    <script>
+        // Retrieve the form data from the query parameters
+        var urlParams = new URLSearchParams(window.location.search);
+        var idValue = urlParams.get('id');
+        var nameValue = urlParams.get('name');
+        var usernameValue = urlParams.get('username');
+        var passwordValue = urlParams.get('password');
+        var emailValue = urlParams.get('email');
+        var dobValue = urlParams.get('dob');
+        var genderValue = urlParams.get('gender');
+        var addressValue = urlParams.get('address');
+        var cityValue = urlParams.get('city');
+        var pincodeValue = urlParams.get('pincode');
+        var hobbiesValue = urlParams.get('hobbies');
+
+        // Display the result on the result page
+        document.getElementById("result").innerHTML =
+            "<p>ID: " + idValue + "</p>" +
+            "<p>Name: " + nameValue + "</p>" +
+            "<p>Username: " + usernameValue + "</p>" +
+            "<p>Password: " + passwordValue + "</p>" +
+            "<p>Email: " + emailValue + "</p>" +
+            "<p>Date of Birth: " + dobValue + "</p>" +
+            "<p>Gender: " + genderValue + "</p>" +
+            "<p>Address: " + addressValue + "</p>" +
+            "<p>City: " + cityValue + "</p>" +
+            "<p>Pincode: " + pincodeValue + "</p>" +
+            "<p>Hobbies: " + hobbiesValue + "</p>";
+    </script>
+</body>
+</html>

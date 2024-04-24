@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            align-items: center;
+            /* text-align: center; */
+        }
+
+        
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            margin-bottom: 16px;
+        }
+
+        .radio-group input {
+            margin-right: 8px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            margin : 0 auto;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" required><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" required><br>
+
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" required><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" required><br>
+
+        <label for="gender">Gender:</label>
+        <div class="radio-group">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="tel" id="phoneNumber" required><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" rows="4" cols="50" required></textarea><br>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" required><br>
+
+        <label for="pincode">Pincode:</label><br>
+        <input type="text" id="pincode" required><br>
+
+        <label for="hobbies">Hobbies:</label><br>
+        <input type="checkbox" id="hobby1" name="hobbies" value="Dancing">
+        <label for="hobby1">Dancing</label><br>
+        <input type="checkbox" id="hobby2" name="hobbies" value="Singing">
+        <label for="hobby2">Singing</label><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Get the form data
+            var idValue = document.getElementById("id").value;
+            var nameValue = document.getElementById("name").value;
+            var usernameValue = document.getElementById("username").value;
+            var passwordValue = document.getElementById("password").value;
+            var emailValue = document.getElementById("email").value;
+            var dobValue = document.getElementById("dob").value;
+            var genderValue = document.querySelector('input[name="gender"]:checked').value;
+            var phoneNumberValue = document.getElementById("phoneNumber").value;
+            var addressValue = document.getElementById("address").value;
+            var cityValue = document.getElementById("city").value;
+            var pincodeValue = document.getElementById("pincode").value;
+            var hobbiesValue = [];
+
+            // Get selected hobbies
+            var hobby1Checkbox = document.getElementById("hobby1");
+            if (hobby1Checkbox.checked) {
+                hobbiesValue.push(hobby1Checkbox.value);
+            }
+
+            var hobby2Checkbox = document.getElementById("hobby2");
+            if (hobby2Checkbox.checked) {
+                hobbiesValue.push(hobby2Checkbox.value);
+            }
+
+              // Validate phone number
+              if (phoneNumberValue.length !== 10) {
+                alert("Phone number must be 10 digits.");
+                return;
+            }
+
+            if (pincodeValue.length !== 6) {
+                alert("Pin Code must be 6 digits.");
+                return;
+            }
+
+
+            // Validate date of birth
+            var dobYear = parseInt(dobValue.split("-")[0]);
+            if (dobYear >= 2004) {
+                alert("Date of Birth must be before 2004.");
+                return;
+            }
+
+            // Redirect to the result page with the input data as query parameters
+            window.location.href = "result.html?id=" + encodeURIComponent(idValue) +
+                "&name=" + encodeURIComponent(nameValue) +
+                "&username=" + encodeURIComponent(usernameValue) +
+                "&password=" + encodeURIComponent(passwordValue) +
+                "&email=" + encodeURIComponent(emailValue) +
+                "&phoneNumber=" + encodeURIComponent(phoneNumberValue) +
+                "&dob=" + encodeURIComponent(dobValue) +
+                "&gender=" + encodeURIComponent(genderValue) +
+                "&address=" + encodeURIComponent(addressValue) +
+                "&city=" + encodeURIComponent(cityValue) +
+                "&pincode=" + encodeURIComponent(pincodeValue) +
+                "&hobbies=" + encodeURIComponent(hobbiesValue.join(','));
+        }
+    </script>
+</body>
+
+</html>
